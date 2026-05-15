@@ -93,4 +93,27 @@ router.get('/mine', protect, requireRole('user', 'admin'), async (req, res) => {
   }
 });
 
+router.get('/:id', protect, requireRole('user', 'admin'), async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id)
+      .populate('user', 'name email role')
+      .populate('items.product', 'name imageUrl');
+
+    if (!order) {
+      return res.status(404).json({ message: 'Order not found' });
+    }
+
+    const isOwner = order.user._id.toString() === req.user._id.toString();
+    const isAdmin = req.user.role === 'admin';
+
+    if (!isOwner && !isAdmin) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    res.json({ order });
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to load order' });
+  }
+});
+
 module.exports = router;
