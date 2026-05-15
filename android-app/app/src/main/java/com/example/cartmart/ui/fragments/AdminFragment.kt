@@ -16,6 +16,7 @@ import com.example.cartmart.R
 import com.example.cartmart.core.AppServices
 import com.example.cartmart.network.OrderStatusUpdateRequest
 import com.example.cartmart.network.ProductDto
+import com.example.cartmart.network.ProductWriteRequest
 import com.example.cartmart.ui.adapters.AdminOrderAdapter
 import com.example.cartmart.ui.adapters.ProductAdapter
 import kotlinx.coroutines.Dispatchers
@@ -157,8 +158,7 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
             return
         }
 
-        val payload = ProductDto(
-            id = editingProductId.orEmpty(),
+        val payload = ProductWriteRequest(
             name = name,
             description = description,
             category = category,

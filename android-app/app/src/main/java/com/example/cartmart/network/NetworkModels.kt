@@ -32,6 +32,16 @@ data class ProductDto(
     val featured: Boolean = false
 )
 
+data class ProductWriteRequest(
+    val name: String,
+    val description: String,
+    val category: String,
+    val imageUrl: String,
+    val price: Double,
+    val stock: Int,
+    val featured: Boolean
+)
+
 data class CartItemDto(
     val productId: String,
     val name: String,

@@ -31,10 +31,10 @@ interface CartMartApi {
     suspend fun product(@Path("id") id: String): Response<ProductDto>
 
     @POST("api/products")
-    suspend fun createProduct(@Body product: ProductDto): Response<ProductDto>
+    suspend fun createProduct(@Body product: ProductWriteRequest): Response<ProductDto>
 
     @PUT("api/products/{id}")
-    suspend fun updateProduct(@Path("id") id: String, @Body product: ProductDto): Response<ProductDto>
+    suspend fun updateProduct(@Path("id") id: String, @Body product: ProductWriteRequest): Response<ProductDto>
 
     @DELETE("api/products/{id}")
     suspend fun deleteProduct(@Path("id") id: String): Response<Unit>

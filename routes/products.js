@@ -49,7 +49,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', protect, requireRole('admin'), async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    const { _id, id, ...productData } = req.body;
+    const product = await Product.create(productData);
     res.status(201).json({ product });
   } catch (error) {
     res.status(400).json({ message: 'Failed to create product' });
@@ -58,7 +59,8 @@ router.post('/', protect, requireRole('admin'), async (req, res) => {
 
 router.put('/:id', protect, requireRole('admin'), async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    const { _id, id, ...productData } = req.body;
+    const product = await Product.findByIdAndUpdate(req.params.id, productData, {
       new: true,
       runValidators: true
     });
