@@ -14,7 +14,9 @@ import com.example.cartmart.network.ProductDto
 
 class ProductAdapter(
     private val showActionButton: Boolean,
-    private val onAddClick: ((ProductDto) -> Unit)?
+    private val actionButtonText: String = "Add to Cart",
+    private val allowOutOfStock: Boolean = false,
+    private val onActionClick: ((ProductDto) -> Unit)?
 ) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
     private val items = mutableListOf<ProductDto>()
 
@@ -54,11 +56,11 @@ class ProductAdapter(
                 crossfade(true)
             }
             actionButton.visibility = if (showActionButton) View.VISIBLE else View.GONE
-            actionButton.isEnabled = product.stock > 0
-            actionButton.text = if (product.stock > 0) "Add to Cart" else "Out of Stock"
+            actionButton.isEnabled = allowOutOfStock || product.stock > 0
+            actionButton.text = if (allowOutOfStock || product.stock > 0) actionButtonText else "Out of Stock"
             actionButton.setOnClickListener {
-                if (product.stock > 0) {
-                    onAddClick?.invoke(product)
+                if (allowOutOfStock || product.stock > 0) {
+                    onActionClick?.invoke(product)
                 }
             }
         }
