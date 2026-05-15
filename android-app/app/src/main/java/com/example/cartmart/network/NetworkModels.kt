@@ -38,8 +38,7 @@ data class ProductWriteRequest(
     val category: String,
     val imageUrl: String,
     val price: Double,
-    val stock: Int,
-    val featured: Boolean
+    val stock: Int
 )
 
 data class CartItemDto(

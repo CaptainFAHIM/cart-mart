@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         productForm.elements.imageUrl.value = product.imageUrl;
         productForm.elements.price.value = product.price;
         productForm.elements.stock.value = product.stock;
-        productForm.elements.featured.checked = Boolean(product.featured);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
@@ -199,8 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: formData.get('category'),
       imageUrl: formData.get('imageUrl'),
       price: Number(formData.get('price')),
-      stock: Number(formData.get('stock')),
-      featured: formData.get('featured') === 'on'
+      stock: Number(formData.get('stock'))
     };
 
     const productId = productIdField.value;

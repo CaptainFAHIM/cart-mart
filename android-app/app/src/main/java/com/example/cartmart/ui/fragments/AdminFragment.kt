@@ -52,7 +52,6 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
         productImageUrlInput = view.findViewById(R.id.productImageUrlInput)
         productPriceInput = view.findViewById(R.id.productPriceInput)
         productStockInput = view.findViewById(R.id.productStockInput)
-        productFeaturedSwitch = view.findViewById(R.id.productFeaturedSwitch)
         productSubmit = view.findViewById(R.id.productSubmit)
         resetProductButton = view.findViewById(R.id.resetProductButton)
         productsRecycler = view.findViewById(R.id.adminProductsRecycler)
@@ -127,7 +126,6 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
         productImageUrlInput.setText(product.imageUrl)
         productPriceInput.setText(product.price.toString())
         productStockInput.setText(product.stock.toString())
-        productFeaturedSwitch.isChecked = product.featured
     }
 
     private fun clearProductForm() {
@@ -142,7 +140,6 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
         productImageUrlInput.setText("")
         productPriceInput.setText("")
         productStockInput.setText("")
-        productFeaturedSwitch.isChecked = false
     }
 
     private fun saveProduct() {
@@ -165,7 +162,6 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
             imageUrl = imageUrl,
             price = price,
             stock = stock,
-            featured = productFeaturedSwitch.isChecked
         )
 
         viewLifecycleOwner.lifecycleScope.launch {
