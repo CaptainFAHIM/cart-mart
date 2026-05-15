@@ -1,8 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.CartMart" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.CartMart" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/cartmart_accent</item>
+        <item name="colorSecondary">@color/cartmart_accent_dark</item>
+        <item name="colorTertiary">@color/cartmart_surface</item>
+        <item name="android:statusBarColor">@color/cartmart_bg</item>
+        <item name="android:navigationBarColor">@color/cartmart_bg</item>
+        <item name="android:textColorPrimary">@color/cartmart_text</item>
+        <item name="android:textColorSecondary">@color/cartmart_muted</item>
     </style>
 
     <style name="Theme.CartMart" parent="Base.Theme.CartMart" />
