@@ -3,6 +3,7 @@
     <string name="app_tagline">Mobile shop client for CartMartBD</string>
     <string name="login_title">Welcome back</string>
     <string name="login_subtitle">Sign in to browse products, manage cart items, and place orders.</string>
+    <string name="register_title">Create an account</string>
     <string name="register_label">Register</string>
     <string name="login_label">Login</string>
     <string name="products_label">Products</string>
